@@ -46,6 +46,6 @@ export class CyberGhostService {
   }
 
   isConnected(): Observable<boolean> {
-    return this.exec('sudo cyberghostvpn --status').pipe(map(([stdin]) => stdin === 'VPN connection found.'));
+    return this.exec('sudo cyberghostvpn --status').pipe(map(([stdin]) => stdin?.split('\n')?.[0] === 'VPN connection found.'));
   }
 }

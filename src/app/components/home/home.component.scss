@@ -1,3 +1,48 @@
 :host {
-  
+  & h2 {
+    margin-bottom: 50px;
+    &.connected {
+      color: #B6944D;
+    }
+    &.not-connected {
+      color: #ffffff;
+    }
+  }
+
+  & .btn-connect  {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: #3C362D;
+    border: 1px solid #E0B52C;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 25px #fddf85;
+
+    & fa-icon {
+      color: #E0B52C;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.btn-connect-off {
+      background-color: transparent;
+      border-color: #3C362D;
+      box-shadow: 0 0 25px #474743;
+
+      & fa-icon {
+        color: #ffffff;
+      }
+
+      &:hover {
+        background-color: #3c362d;
+        border-color: #b19b6d;
+        box-shadow: 0 0 25px #f6f5ec;
+      }
+    }
+
+
+  }
 }

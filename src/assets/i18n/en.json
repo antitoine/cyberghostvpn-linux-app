@@ -1,9 +1,12 @@
 {
   "PAGES": {
       "HOME": {
-        "TITLE": "Ready",
+        "TITLE": "CyberGhost VPN",
         "NOT_INSTALLED": "CyberGhost CLI command not available, you need to follow installation instructions before using this application.",
-        "GO_TO_INSTALL": "Get instructions"
+        "GO_TO_INSTALL": "Get instructions",
+        "CONNECTED": "Connected",
+        "NOT_CONNECTED": "Not connected",
+        "LOADING": "Loading..."
       },
       "INSTALL": {
         "TITLE": "Installation instructions",

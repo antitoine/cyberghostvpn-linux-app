@@ -3,9 +3,25 @@
   <h1 class="title">
     {{ 'PAGES.HOME.TITLE' | translate }}
   </h1>
-
   <ng-container *ngIf="cyberGhostAvailable$ | async; else notInstalled">
-    READY TO WORK
+
+    <ng-container *ngIf="vpnConnect$ | async; else notConnected">
+      <h2 class="connected">
+        {{ 'PAGES.HOME.CONNECTED' | translate }}
+      </h2>
+      <button (click)="toggleConnection()" class="btn-connect btn-connect-on">
+        <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
+      </button>
+    </ng-container>
+    <ng-template #notConnected>
+      <h2 class="not-connected">
+        {{ (!loading ? 'PAGES.HOME.NOT_CONNECTED' : 'PAGES.HOME.LOADING') | translate }}
+      </h2>
+      <button (click)="toggleConnection()" class="btn-connect btn-connect-off">
+        <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
+      </button>
+    </ng-template>
+
   </ng-container>
   <ng-template #notInstalled>
     <p>{{ 'PAGES.HOME.NOT_INSTALLED' | translate }}</p>

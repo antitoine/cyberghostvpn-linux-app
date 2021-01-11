@@ -2,10 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components';
 
-import { HomeRoutingModule } from './home/home-routing.module';
-import { DetailRoutingModule } from './detail/detail-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { InstallComponent } from './components/install/install.component';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'install',
+    component: InstallComponent,
+  },
   {
     path: '',
     redirectTo: 'home',
@@ -20,8 +28,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-    HomeRoutingModule,
-    DetailRoutingModule
   ],
   exports: [RouterModule]
 })

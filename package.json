@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
-  "version": "9.0.3",
-  "description": "Angular 11 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "cyberghostvpn-linux-app",
+  "version": "1.0.0",
+  "description": "Application fox Linux CLI CyberGhost VPN using Angular and Electron ",
+  "homepage": "https://github.com/antitoine/cyberghostvpn-linux-app",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Antoine CHABERT",
+    "email": "chabert.antoine@gmail.com"
   },
   "keywords": [
     "angular",
@@ -18,7 +18,10 @@
     "sass",
     "windows",
     "mac",
-    "linux"
+    "linux",
+    "cyberghost",
+    "app",
+    "desktop"
   ],
   "main": "main.js",
   "private": true,
@@ -40,7 +43,9 @@
     "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "lint": "ng lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rxjs": "6.6.3"
+  },
   "devDependencies": {
     "@angular-builders/custom-webpack": "10.0.1",
     "@angular-devkit/build-angular": "0.1100.3",

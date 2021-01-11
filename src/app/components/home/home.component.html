@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h1 class="title">
+    {{ 'PAGES.HOME.TITLE' | translate }}
+  </h1>
+
+  <ng-container *ngIf="cyberGhostAvailable$ | async; else notInstalled">
+    READY TO WORK
+  </ng-container>
+  <ng-template #notInstalled>
+    <p>{{ 'PAGES.HOME.NOT_INSTALLED' | translate }}</p>
+
+    <a routerLink="/install">{{ 'PAGES.HOME.GO_TO_INSTALL' | translate }}</a>
+  </ng-template>
+</div>

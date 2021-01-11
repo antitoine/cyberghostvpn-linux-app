@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="inElectronApp; else notElectronApp">
+  <router-outlet></router-outlet>
+</ng-container>
+<ng-template #notElectronApp>{{ 'notElectronApp' | translate }}</ng-template>

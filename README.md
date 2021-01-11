@@ -65,7 +65,7 @@ You can disable "Developer Tools" by commenting `win.webContents.openDevTools();
 
 ## Use Electron / NodeJS / 3rd party libraries
 
-As see in previous chapter, this sample project runs on both mode (web and electron). To make this happens, **you have to import your dependencies the right way**. Please check `providers/electron.service.ts` to watch how conditional import of libraries has to be done when using electron / NodeJS / 3rd party librairies in renderer context (ie. Angular).
+As see in previous chapter, this sample project runs on both mode (web and electron). To make this happens, **you have to import your dependencies the right way**. Please check `providers/cyberghost.service.ts` to watch how conditional import of libraries has to be done when using electron / NodeJS / 3rd party librairies in renderer context (ie. Angular).
 
 ## Browser mode
 

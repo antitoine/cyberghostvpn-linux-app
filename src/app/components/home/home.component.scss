@@ -1,3 +1,54 @@
+@keyframes startingPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 rgba(253, 223, 133, 1);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(253, 223, 133, 0.5);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 25px rgba(253, 223, 133, 0);
+  }
+}
+@keyframes startingColor {
+  0% {
+    color: #ffffff;
+  }
+  70% {
+    color: #E0B52C;
+  }
+  100% {
+    color: #ffffff;
+  }
+}
+@keyframes stoppingPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 rgba(71, 71, 67, 1);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(71, 71, 67, 0.5);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 25px rgba(71, 71, 67, 0);
+  }
+}
+@keyframes stoppingColor {
+  0% {
+    color: #E0B52C;
+  }
+  70% {
+    color: #ffffff;
+  }
+  100% {
+    color: #E0B52C;
+  }
+}
+
 :host {
   & h2 {
     margin-bottom: 50px;
@@ -18,31 +69,41 @@
     border-radius: 50%;
     outline: none;
     box-shadow: 0 0 25px #fddf85;
-
     & fa-icon {
       color: #E0B52C;
     }
-
     &:hover {
       cursor: pointer;
+    }
+    &.loading {
+      background-color: transparent;
+      box-shadow: 0 0 0 rgba(71, 71, 67, 1);
+      transform: scale(1);
+      animation: stoppingPulse 2s infinite;
+      & fa-icon {
+        animation: stoppingColor 2s infinite;
+      }
     }
 
     &.btn-connect-off {
       background-color: transparent;
       border-color: #3C362D;
       box-shadow: 0 0 25px #474743;
-
       & fa-icon {
         color: #ffffff;
       }
-
       &:hover {
         background-color: #3c362d;
         border-color: #b19b6d;
         box-shadow: 0 0 25px #f6f5ec;
       }
+      &.loading {
+        box-shadow: 0 0 0 rgba(253, 223, 133, 1);
+        animation: startingPulse 2s infinite;
+        & fa-icon {
+          animation: startingColor 2s infinite;
+        }
+      }
     }
-
-
   }
 }

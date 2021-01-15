@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CyberGhostService } from '../../core/services/cyberghost/cyber-ghost.service';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,8 +10,8 @@ import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
   cyberGhostAvailable$: Observable<boolean>;
-  vpnConnect$: Observable<boolean>;
-  loading = true;
+  vpnConnect$: BehaviorSubject<boolean>;
+  loading = false;
   faPowerOff = faPowerOff;
 
   constructor(
@@ -22,10 +21,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.cyberGhostAvailable$ = this.cyberGhostService.isAvailable();
-    this.vpnConnect$ = this.cyberGhostService.isConnected().pipe(tap(() => this.loading = false));
+    //this.vpnConnect$ = this.cyberGhostService.isConnected().pipe(tap(() => this.loading = false));
+    this.vpnConnect$ = new BehaviorSubject(true);
   }
 
   toggleConnection(): void {
     this.loading = true;
+    setTimeout(() => {
+      this.vpnConnect$.next(!this.vpnConnect$.getValue());
+      this.loading = false;
+    }, 5000);
   }
 }

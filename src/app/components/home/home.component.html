@@ -7,9 +7,9 @@
 
     <ng-container *ngIf="vpnConnect$ | async; else notConnected">
       <h2 class="connected">
-        {{ 'PAGES.HOME.CONNECTED' | translate }}
+        {{ (!loading ? 'PAGES.HOME.CONNECTED' : 'PAGES.HOME.LOADING') | translate }}
       </h2>
-      <button (click)="toggleConnection()" class="btn-connect btn-connect-on">
+      <button (click)="toggleConnection()" class="btn-connect btn-connect-on" [class.loading]="loading">
         <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
       </button>
     </ng-container>
@@ -17,7 +17,7 @@
       <h2 class="not-connected">
         {{ (!loading ? 'PAGES.HOME.NOT_CONNECTED' : 'PAGES.HOME.LOADING') | translate }}
       </h2>
-      <button (click)="toggleConnection()" class="btn-connect btn-connect-off">
+      <button (click)="toggleConnection()" class="btn-connect btn-connect-off" [class.loading]="loading">
         <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
       </button>
     </ng-template>

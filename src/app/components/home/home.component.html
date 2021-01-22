@@ -20,6 +20,22 @@
       <button (click)="toggleConnection()" class="btn-connect btn-connect-off" [class.loading]="loading">
         <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
       </button>
+      <ng-container *ngIf="countries$ | async as countries">
+        <label for="selectCountries">Countries:</label>
+        <select id="selectCountries" (change)="onCountryChange($event.target.value)">
+          <option *ngFor="let country of countries" [value]="country.code">
+            {{ country.name }}
+          </option>
+        </select>
+      </ng-container>
+      <ng-container *ngIf="connections$ | async as connections">
+        <label for="selectConnections">Connections:</label>
+        <select id="selectConnections">
+          <option *ngFor="let connection of connections" [value]="connection.id">
+            City: {{ connection.city }} - Instances: {{ connection.instance }} - Load: {{ connection.load * 100 }}%
+          </option>
+        </select>
+      </ng-container>
     </ng-template>
 
   </ng-container>

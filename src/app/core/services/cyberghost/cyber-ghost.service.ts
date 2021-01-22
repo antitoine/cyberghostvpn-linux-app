@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { ElectronService } from '../electron/electron.service';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { Connection, Country } from './cyber-ghost.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,14 +39,51 @@ export class CyberGhostService {
   }
 
   isCommandAvailable(): Observable<boolean> {
-    return this.exec('command -v cyberghostvpn && echo "ok"').pipe(map(([stdin]) => stdin?.split('\n')?.[1] === 'ok'));
+    return this.exec('command -v cyberghostvpn && echo "ok"').pipe(
+      map(([stdin]) => stdin?.split('\n')?.[1] === 'ok'),
+    );
   }
 
   isSudoAvailable(): Observable<boolean> {
-    return this.exec('sudo -n cyberghostvpn >/dev/null && echo "ok"').pipe(map(([stdin]) => stdin?.split('\n')?.[0] === 'ok'));
+    return this.exec('sudo -n cyberghostvpn >/dev/null && echo "ok"').pipe(
+      map(([stdin]) => stdin?.split('\n')?.[0] === 'ok'),
+    );
   }
 
   isConnected(): Observable<boolean> {
-    return this.exec('sudo cyberghostvpn --status').pipe(map(([stdin]) => stdin?.split('\n')?.[0] === 'VPN connection found.'));
+    return this.exec('sudo cyberghostvpn --status').pipe(
+      map(([stdin]) => stdin?.split('\n')?.[0] === 'VPN connection found.'),
+    );
+  }
+
+  countries(): Observable<Country[]> {
+    return this.exec('sudo cyberghostvpn --country-code').pipe(
+      map(([stdin]) =>
+        stdin?.split('\n')?.slice(3, -2)?.map(line => {
+          const [id, name, code] = line?.split('|')?.slice(1, -1);
+          return {
+            id: id?.trim(),
+            name: name?.trim(),
+            code: code?.trim(),
+          };
+        }),
+      ),
+    );
+  }
+
+  connections(countryCode: string): Observable<Connection[]> {
+    return this.exec('sudo cyberghostvpn --country-code ' + countryCode + ' --connection').pipe(
+      map(([stdin]) =>
+        stdin?.split('\n')?.slice(3, -2)?.map(line => {
+          const [id, city, instance, load] = line?.split('|')?.slice(1, -1);
+          return {
+            id: id?.trim(),
+            city: city?.trim(),
+            instance: parseInt(instance),
+            load: parseInt(load?.split('%')?.[0]) / 100,
+          };
+        }),
+      ),
+    );
   }
 }

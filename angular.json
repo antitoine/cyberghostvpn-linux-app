@@ -3,10 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-electron": {
+    "cyberghostvpn-linux-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
+      "prefix": "cg",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -82,24 +83,24 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "angular-electron:build"
+            "browserTarget": "cyberghostvpn-linux-app:build"
           },
           "configurations": {
             "dev": {
-              "browserTarget": "angular-electron:build:dev"
+              "browserTarget": "cyberghostvpn-linux-app:build:dev"
             },
             "web": {
-              "browserTarget": "angular-electron:build:web"
+              "browserTarget": "cyberghostvpn-linux-app:build:web"
             },
             "production": {
-              "browserTarget": "angular-electron:build:production"
+              "browserTarget": "cyberghostvpn-linux-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-electron:build"
+            "browserTarget": "cyberghostvpn-linux-app:build"
           }
         },
         "test": {
@@ -133,7 +134,7 @@
         }
       }
     },
-    "angular-electron-e2e": {
+    "cyberghostvpn-linux-app-e2e": {
       "root": "e2e",
       "projectType": "application",
       "architect": {
@@ -149,7 +150,7 @@
       }
     }
   },
-  "defaultProject": "angular-electron",
+  "defaultProject": "cyberghostvpn-linux-app",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

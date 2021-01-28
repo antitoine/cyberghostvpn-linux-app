@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ElectronService } from './core/services';
 
 @Component({
-  selector: 'app-root',
+  selector: 'cg-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

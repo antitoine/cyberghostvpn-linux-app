@@ -8,5 +8,5 @@ export interface Connection {
   id: string;
   city: string;
   instance: number;
-  load: number;
+  load: string;
 }

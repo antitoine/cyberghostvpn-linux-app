@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { CyberGhostService } from '../../core/services/cyberghost/cyber-ghost.service';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './install.component.html',
-  styleUrls: ['./install.component.scss']
+  selector: 'cg-detail-page',
+  templateUrl: './install-page.component.html',
+  styleUrls: ['./install-page.component.scss']
 })
-export class InstallComponent  implements OnInit {
+export class InstallPageComponent implements OnInit {
   cyberGhostCommandAvailable$: Observable<boolean>;
   sudoCommandAvailable$: Observable<boolean>;
 

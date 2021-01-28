@@ -106,4 +106,43 @@
       }
     }
   }
+
+  & .advanced-section {
+    position: absolute;
+    bottom: 20px;
+    & button {
+      display: block;
+      background: none;
+      border: none;
+      color: #ccc;
+      padding: 10px 20px 10px 10px;
+      position: relative;
+      outline: none;
+      margin: 20px auto;
+      &:hover {
+        cursor: pointer;
+      }
+      & > .arrow {
+        position: absolute;
+        right: 3px;
+        transform: rotate(-90deg);
+        &.up {
+          transform: rotate(90deg);
+        }
+      }
+    }
+    & .options {
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        min-width: 300px;
+        & + div {
+          margin-top: 15px;
+        }
+      }
+      & label {
+        margin-right: 10px;
+      }
+    }
+  }
 }

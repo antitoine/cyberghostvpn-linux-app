@@ -12,8 +12,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { InstallComponent } from './components/install/install.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { InstallPageComponent } from './components/install-page/install-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // AoT requires an exported function for factories
@@ -22,7 +22,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, InstallComponent],
+  declarations: [AppComponent, HomePageComponent, InstallPageComponent],
   imports: [
     BrowserModule,
     FormsModule,

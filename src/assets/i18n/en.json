@@ -6,7 +6,12 @@
         "GO_TO_INSTALL": "Get instructions",
         "CONNECTED": "Connected",
         "NOT_CONNECTED": "Not connected",
-        "LOADING": "Loading..."
+        "LOADING": "Loading...",
+        "ADVANCED": "Advanced options",
+        "OPTIONS": {
+          "COUNTRY": "Country",
+          "CITY": "City"
+        }
       },
       "INSTALL": {
         "TITLE": "Installation instructions",

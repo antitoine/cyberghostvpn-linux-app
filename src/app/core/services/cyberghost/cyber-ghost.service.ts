@@ -80,10 +80,26 @@ export class CyberGhostService {
             id: id?.trim(),
             city: city?.trim(),
             instance: parseInt(instance),
-            load: parseInt(load?.split('%')?.[0]) / 100,
+            load,
           };
         }),
       ),
     );
+  }
+
+  connect(countryCode: string = null, cityName: string = null): Observable<void> {
+    let command = 'sudo cyberghostvpn';
+    if (countryCode) {
+      command += ' --country-code ' + countryCode;
+    }
+    if (cityName) {
+      command += ' --city ' + cityName;
+    }
+    command += ' --connect';
+    return this.exec(command).pipe(map(() => {}));
+  }
+
+  disconnect(): Observable<void> {
+    return this.exec('sudo cyberghostvpn --stop').pipe(map(() => {}));
   }
 }

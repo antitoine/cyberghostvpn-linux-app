@@ -1,0 +1,54 @@
+<div class="container">
+
+  <h1 class="title">
+    {{ 'PAGES.HOME.TITLE' | translate }}
+  </h1>
+  <ng-container *ngIf="cyberGhostAvailable$ | async; else notInstalled">
+
+    <ng-container *ngIf="vpnConnect$ | async; else notConnected">
+      <h2 class="connected">
+        {{ (!loading ? 'PAGES.HOME.CONNECTED' : 'PAGES.HOME.LOADING') | translate }}
+      </h2>
+      <button (click)="toggleConnection()" class="btn-connect btn-connect-on" [class.loading]="loading">
+        <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
+      </button>
+    </ng-container>
+    <ng-template #notConnected>
+      <h2 class="not-connected">
+        {{ (!loading ? 'PAGES.HOME.NOT_CONNECTED' : 'PAGES.HOME.LOADING') | translate }}
+      </h2>
+      <button (click)="toggleConnection()" class="btn-connect btn-connect-off" [class.loading]="loading">
+        <fa-icon [icon]="faPowerOff" size="5x"></fa-icon>
+      </button>
+      <div class="advanced-section" *ngIf="countries$ | async as countries">
+        <button type="button" (click)="toggleAdvancedMode()">
+          {{ 'PAGES.HOME.ADVANCED' | translate }} <span class="arrow" [class.up]="advancedMode">></span>
+        </button>
+        <div class="options" *ngIf="advancedMode">
+          <div>
+            <label for="selectCountries">{{ 'PAGES.HOME.OPTIONS.COUNTRY' | translate }}</label>
+            <select id="selectCountries" [(ngModel)]="selectedCountryCode" (ngModelChange)="onCountryChange($event)">
+              <option *ngFor="let country of countries" [value]="country.code">
+                {{ country.name }}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="connections$ | async as connections">
+            <label for="selectCity">{{ 'PAGES.HOME.OPTIONS.CITY' | translate }}</label>
+            <select id="selectCity" [(ngModel)]="selectedCityName">
+              <option *ngFor="let connection of connections" [value]="connection.city">
+                {{ connection.city }} - Instances: {{ connection.instance }} - Load: {{ connection.load }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+  </ng-container>
+  <ng-template #notInstalled>
+    <p>{{ 'PAGES.HOME.NOT_INSTALLED' | translate }}</p>
+
+    <a routerLink="/install">{{ 'PAGES.HOME.GO_TO_INSTALL' | translate }}</a>
+  </ng-template>
+</div>

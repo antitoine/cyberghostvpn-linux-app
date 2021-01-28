@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { InstallComponent } from './install.component';
+import { InstallPageComponent } from './install-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('InstallComponent', () => {
-  let component: InstallComponent;
-  let fixture: ComponentFixture<InstallComponent>;
+  let component: InstallPageComponent;
+  let fixture: ComponentFixture<InstallPageComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [InstallComponent],
+      declarations: [InstallPageComponent],
       imports: [TranslateModule.forRoot(), RouterTestingModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InstallComponent);
+    fixture = TestBed.createComponent(InstallPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
